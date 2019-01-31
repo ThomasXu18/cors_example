@@ -14,3 +14,8 @@ cd backend
 yarn install
 node server.js
 ```
+
++ simple requst
+![cors simple request](https://i.imgur.com/hnzMH8F.gif)
++ preflight request
+![cors preflight request](https://i.imgur.com/P0KZGeI.gif)
