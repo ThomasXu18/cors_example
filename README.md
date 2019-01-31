@@ -1,4 +1,4 @@
-An Exemple fot CORS.
+An Exemple for CORS.
 
 ## Usage
 ```bash
