@@ -19,7 +19,7 @@ app.post('/pre-s', cors(), function(req, res, next) {
 	res.json({msg: 'This post request is CORS-allowed.'})
 })
 
-app.post('/pre-f', cors(), function(req, res, next) {
+app.post('/pre-f', function(req, res, next) {
 	res.json({msg: 'This post request is CORS-disallowed.'})
 })
 
