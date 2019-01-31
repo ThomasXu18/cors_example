@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<div style="width: 300px; background: #b3b3b3">
+		<p> Open the DevTools and then click the Network tab. </p>
+		<p> Observe the network request activity. </p>
+	</div>
+	<div style="width: 300px; background: #e3e3e3">
+		<ul>
+			<li>Simple Request
+				<ul>
+					<li><button onclick="simple_success()">Success</button></li>
+					<li><button onclick="simple_failed()">Failed</button></li>
+				</ul>
+			</li>
+			<li>Preflight Request
+				<ul>
+					<li><button onclick="preflight_success()">Success</button></li>
+					<li><button onclick="preflight_failed()">Failed</button></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+    <script type="text/javascript">
+
+    function simple_success() {
+    	$.ajax({
+    		type: 'GET',
+    		url: 'http://localhost:8080/simple-s',
+    		success: function(data){alert(data.msg);},
+		    failure: function(errMsg) { alert(errMsg); }
+    	});
+    }
+
+    function simple_failed() {
+    	$.ajax({
+    		type: 'GET',
+    		url: 'http://localhost:8080/simple-f',
+    		success: function(data){alert(data.msg);},
+		    failure: function(errMsg) { alert(errMsg); }
+    	});
+    }
+
+    function preflight_success() {
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:8080/pre-s',
+            data: '[{"test": "test"}]',
+            contentType: "application/json", // Using application/json will generate a preflight request
+            dataType: 'json',
+            success: function(data){alert(data.msg);},
+            failure: function(errMsg) { alert(errMsg); }
+        });
+    }
+
+    function preflight_failed() {
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:8080/pre-f',
+            data: '[{"test": "test"}]',
+            contentType: "application/json", // Using application/json will generate a preflight request
+            dataType: 'json',
+            success: function(data){alert(data.msg);},
+            failure: function(errMsg) { alert(errMsg); }
+        });
+    }
+    </script>
+</body>
+
+</html>
